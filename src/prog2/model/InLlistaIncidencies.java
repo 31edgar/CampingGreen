@@ -19,7 +19,7 @@ public interface InLlistaIncidencies {
      * @param data Data quan es produeix la incidència.
      * @throws ExcepcioCamping Per comprovar i avisar si l'allotjament ja té una incidència o si el tipus d’incidència que es vol afegir no existeix.
      */
-    public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping;
+    public void afegirIncidencia(int num, Incidencia.TipusIncidencia tipus, Allotjament allotjament, String data) throws ExcepcioCamping;
     /**
     * Aquest mètode elimina una incidència de la llista i actualitza l'estat de l'allotjament mitjançant el mètode obrirAllotjament de la classe Allotjament.
     * @param in Objecte de tipus Incidència

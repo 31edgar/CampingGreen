@@ -14,8 +14,9 @@ public class Incidencia {
     private TipusIncidencia tipusIncidencia_;
 
     // Constructor
-    public Incidencia(int numeroIncidencia, Allotjament allotjament, String data) {
+    public Incidencia(int numeroIncidencia, TipusIncidencia tipusIncidencia, Allotjament allotjament, String data) {
         numeroIncidencia_ = numeroIncidencia;
+        tipusIncidencia_ = tipusIncidencia;
         allotjament_ = allotjament;
         data_ = data;
     }
