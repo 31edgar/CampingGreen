@@ -1,4 +1,6 @@
 package prog2.model;
+import prog2.model.Allotjament.Allotjament;
+import prog2.model.Interficies.InLlistaAllotjaments;
 import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;

@@ -1,4 +1,7 @@
-package prog2.model;
+package prog2.model.Allotjament;
+
+import prog2.model.Incidencia;
+import prog2.model.Interficies.InAllotjament;
 
 public abstract class Allotjament implements InAllotjament {
     // Atributs classe Allotjament

@@ -1,8 +1,10 @@
 package prog2.model;
+import prog2.model.Allotjament.Allotjament;
+import prog2.model.Interficies.InLlistaIncidencies;
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
-public class LlistaIncidencies implements InLlistaIncidencies{
+public class LlistaIncidencies implements InLlistaIncidencies {
 
     //Atribut
     private ArrayList<Incidencia> incidencias;

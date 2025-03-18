@@ -1,6 +1,7 @@
 
-package prog2.model;
+package prog2.model.Interficies;
 
+import prog2.model.Acces.Acces;
 import prog2.vista.ExcepcioCamping;
 
 /**

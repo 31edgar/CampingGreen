@@ -1,5 +1,7 @@
 
-package prog2.model;
+package prog2.model.Interficies;
+
+import prog2.model.Incidencia;
 
 /**
  * Interfície que defineix les operacions bàsiques per als allotjaments.

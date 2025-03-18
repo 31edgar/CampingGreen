@@ -1,5 +1,7 @@
 package prog2.model;
 
+import prog2.model.Allotjament.Allotjament;
+
 public class Incidencia {
     public enum TipusIncidencia {
         Reparacio,

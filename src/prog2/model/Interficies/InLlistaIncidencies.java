@@ -1,6 +1,8 @@
 
-package prog2.model;
+package prog2.model.Interficies;
 
+import prog2.model.Allotjament.Allotjament;
+import prog2.model.Incidencia;
 import prog2.vista.ExcepcioCamping;
 
 /**

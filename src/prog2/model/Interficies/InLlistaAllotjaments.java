@@ -1,9 +1,8 @@
 
-package prog2.model;
+package prog2.model.Interficies;
 
+import prog2.model.Allotjament.Allotjament;
 import prog2.vista.ExcepcioCamping;
-
-import java.util.Scanner;
 
 /**
  * Interfície que defineix les operacions bàsiques d'una llista d'allotjaments.
