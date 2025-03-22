@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public abstract class AccesTerra extends Acces{
     //Atributs
-    private int longitud_;
+    private float longitud_;
 
     //Constructor
-    AccesTerra(String nom, boolean accessibilitat, boolean estat, ArrayList<Allotjament> accesAllotjaments,
-                int longitud){
-        super(nom, accessibilitat, estat, accesAllotjaments);
+    AccesTerra(String nom, boolean accessibilitat,
+                float longitud){
+        super(nom, accessibilitat);
         this.longitud_ = longitud;
     }
 
@@ -20,6 +20,6 @@ public abstract class AccesTerra extends Acces{
     }
 
     //Getter i setter
-    public int getLongitud(){return longitud_;}
+    public float getLongitud(){return longitud_;}
     public void setLongitud(int longitud){this.longitud_=longitud;}
 }

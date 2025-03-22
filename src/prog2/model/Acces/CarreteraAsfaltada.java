@@ -4,14 +4,13 @@ import prog2.model.Allotjament.Allotjament;
 
 import java.util.ArrayList;
 
-public class CarreteraAsfalt extends AccesAsfalt{
+public class CarreteraAsfaltada extends AccesAsfalt{
     //Atributs
-    private int pesMaxim_;
+    private float pesMaxim_;
 
     //Constructor
-    CarreteraAsfalt(String nom, boolean accessibilitat, boolean estat, ArrayList<Allotjament> accesAllotjaments,
-               int metreQuadratsAsfalt, int pesMaxim){
-        super(nom, accessibilitat, estat, accesAllotjaments, metreQuadratsAsfalt);
+    public CarreteraAsfaltada(String nom, boolean accessibilitat, float metreQuadratsAsfalt, float pesMaxim){
+        super(nom, accessibilitat, metreQuadratsAsfalt);
         this.pesMaxim_=pesMaxim;
     }
 
@@ -25,6 +24,6 @@ public class CarreteraAsfalt extends AccesAsfalt{
     }
 
     //Getter i Setter
-    public int getPesMaxim(){return pesMaxim_;}
+    public float getPesMaxim(){return pesMaxim_;}
     public void setPesMaxim(int pesMaxim){this.pesMaxim_=pesMaxim;}
 }

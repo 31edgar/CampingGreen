@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class LlistaAllotjaments implements InLlistaAllotjaments {
     // Atributs
-    ArrayList<Allotjament> allotjaments;
+    private ArrayList<Allotjament> allotjaments;
 
     // Constructor
     public LlistaAllotjaments() {
@@ -38,7 +38,12 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         String allotjamentsLlistats = "";
 
         for (Allotjament allotjament : allotjaments) {
-            if (allotjament.getEstatAllotjament().equals(estat)) { // No se si canviar-ho a una forma més fàcil d'entendre
+            // Com l'estat de la classe Allotjament es un boolean i no un string, utilitzarem l'operador ternari
+            // Així podem decidir el valor del nostre String segons si l'estat és operatiu o no operatiu
+            String estatAllotjament = (allotjament.getEstatAllotjament()) ? "Operatiu" : "No operatiu";
+
+            // Tots els allotjaments que coincideixen amb l'estat donat, s'afegiran al string de la llista
+            if (estatAllotjament.equals(estat)) {
                 allotjamentsLlistats += allotjament.toString() + "\n"; // el \n està posat per a que sigui més clara la informació, espero que no afecti al desenvolupament
             }
         }
@@ -52,7 +57,10 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
     public boolean containsAllotjamentOperatiu() {
         for (Allotjament allotjament : allotjaments) {
-            if (allotjament.getEstatAllotjament().equals("Operatiu")) {
+            // Utilitzem la mateixa metodologia que a llistarAllotjaments()
+            String estatAllotjament = (allotjament.getEstatAllotjament()) ? "Operatiu" : "No operatiu";
+
+            if (estatAllotjament.equals("Operatiu")) {
                 return true;
             }
         }

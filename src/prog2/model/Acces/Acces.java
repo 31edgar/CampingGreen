@@ -10,15 +10,15 @@ public abstract class Acces implements InAcces {
     private String nom_;
     private boolean accessibilitat_;
     private boolean estat_;
-    //Cada accés te la seva llista d'allotjaments, no és la mateixa ArrayList que a  LlistaAllotjaments
-    private ArrayList<Allotjament> accesAllotjaments_;
+    //Cada accés te la seva llista d'allotjaments, no és la mateixa ArrayList que a LlistaAllotjaments
+    private ArrayList<Allotjament> accesAllotjaments_ = new ArrayList<>();
 
     //Constructor
-    public Acces(String nom, boolean accessibilitat, boolean estat, ArrayList<Allotjament> accesAllotjaments){
+    public Acces(String nom, boolean accessibilitat){
         this.nom_ = nom;
         this.accessibilitat_ = accessibilitat;
-        this.estat_ = estat;
-        this.accesAllotjaments_ = accesAllotjaments;
+        // Per defecte, l'estat s'inicialitza com true
+        this.estat_ = true;
     }
 
     public void afegirAllotjament(Allotjament allotjament) {

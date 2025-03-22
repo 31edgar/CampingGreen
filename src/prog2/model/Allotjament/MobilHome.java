@@ -5,9 +5,9 @@ public class MobilHome extends Casa {
     private boolean terrasaBarbacoa_;
 
     //Constructor
-    public MobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+    public MobilHome(String nom_, String idAllotjament_, boolean estatAllotjament, String estatIluminacio, float mida, int habitacions, int placesPersones,
                      boolean terrasaBarbacoa_) {
-        super(nom_, idAllotjament_, 5, 3, mida, habitacions, placesPersones);
+        super(nom_, idAllotjament_, 5, 3, estatAllotjament, estatIluminacio, mida, habitacions, placesPersones);
         this.terrasaBarbacoa_ = terrasaBarbacoa_;
     }
 

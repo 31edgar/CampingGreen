@@ -6,9 +6,9 @@ public class Glamping extends Casa {
     private boolean casaMascota_;
 
     //Constructor
-    public Glamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+    public Glamping(String nom_, String idAllotjament_,boolean estatAllotjament, String estatIluminacio, float mida, int habitacions, int placesPersones,
                     String material_, boolean casaMascota_) {
-        super(nom_, idAllotjament_, 5, 3, mida, habitacions, placesPersones);
+        super(nom_, idAllotjament_, 5, 3, estatAllotjament, estatIluminacio, mida, habitacions, placesPersones);
         this.material_ = material_;
         this.casaMascota_ = casaMascota_;
     }

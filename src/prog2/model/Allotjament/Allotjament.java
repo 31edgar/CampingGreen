@@ -9,17 +9,18 @@ public abstract class Allotjament implements InAllotjament {
     private String idAllotjament_;
     private long estadaMinimaALTA_;
     private long estadaMinimaBAIXA_;
-    private String estatAllotjament_; // NOUS ATRIBUTS
+    private boolean estatAllotjament_; // NOUS ATRIBUTS
     private String estatIluminacio_; // NOUS ATRIBUTS
 
     //Constructor comú
-    public Allotjament(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_){
+    public Allotjament(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, boolean estatAllotjament_,
+        String estatIluminacio){
         this.nom_ = nom_;
         this.idAllotjament_ = idAllotjament_;
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
-        this.estatAllotjament_ = "Operatiu";
-        this.estatIluminacio_ = "100%";
+        this.estatAllotjament_ = estatAllotjament_;
+        this.estatIluminacio_ = estatIluminacio;
     }
 
     //Mètodes
@@ -54,7 +55,7 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
 
-    public String getEstatAllotjament() {
+    public boolean getEstatAllotjament() {
         return estatAllotjament_;
     }
 
@@ -68,16 +69,16 @@ public abstract class Allotjament implements InAllotjament {
     public String toString() {
         return "Nom=" + nom_ + ", Id=" + idAllotjament_ + ", estada mínima en temp ALTA= " + estadaMinimaALTA_ +
                 ", estada mínima en temp BAIXA= " + estadaMinimaBAIXA_ + ", estatAllotjament= " +
-                estatAllotjament_ + ", estatIluminacio= " + estatIluminacio_ + ".";
+                ((estatAllotjament_)?"Operatiu" : "No operatiu") + ", estatIluminacio= " + estatIluminacio_ + ".";
     }
 
     public void tancarAllotjament(Incidencia in) {
-        estatAllotjament_ = "No operatiu"; // Declarem l'allotjament com a No operatiu
+        estatAllotjament_ = false; // Declarem l'allotjament com a No operatiu
         estatIluminacio_ = in.getIluminacioAllotjament(); // Modifiquem la il·luminació segons el tipus d'incidència
     }
 
     public void obrirAllotjament() {
-        estatAllotjament_ = "Operatiu";
+        estatAllotjament_ = true;
         estatIluminacio_ = "100%";
     }
 

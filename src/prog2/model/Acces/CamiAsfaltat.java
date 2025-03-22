@@ -4,11 +4,11 @@ import prog2.model.Allotjament.Allotjament;
 
 import java.util.ArrayList;
 
-public class CamiTerra extends AccesTerra{
+public class CamiAsfaltat extends AccesAsfalt{
 
     //Constructor
-    public CamiTerra(String nom, boolean accessibilitat, float longitud){
-        super(nom, accessibilitat, longitud);
+    public CamiAsfaltat(String nom, boolean accessibilitat, float metreQuadratsAsfalt){
+        super(nom, accessibilitat, metreQuadratsAsfalt);
     }
 
     public boolean isAccessibilitat() {

@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 public abstract class AccesAsfalt extends Acces{
     //Atributs
-    private int metresQuadratsAsfalt_;
+    private float metresQuadratsAsfalt_;
 
     //Constructor
-    AccesAsfalt(String nom, boolean accessibilitat, boolean estat, ArrayList<Allotjament> accesAllotjaments,
-                int metresQuadratsAsfalt){
-        super(nom, accessibilitat, estat, accesAllotjaments);
+    AccesAsfalt(String nom, boolean accessibilitat, float metresQuadratsAsfalt){
+        super(nom, accessibilitat);
         this.metresQuadratsAsfalt_ = metresQuadratsAsfalt;
     }
 
@@ -20,6 +19,6 @@ public abstract class AccesAsfalt extends Acces{
     }
 
     //Getter i Setter
-    public int getMetresQuadratsAsfalt(){return metresQuadratsAsfalt_;}
+    public float getMetresQuadratsAsfalt(){return metresQuadratsAsfalt_;}
     public void setMetresQuadratsAsfalt(int metresQuadratsAsfalt){this.metresQuadratsAsfalt_=metresQuadratsAsfalt;}
 }
