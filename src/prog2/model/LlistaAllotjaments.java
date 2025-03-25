@@ -87,4 +87,13 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
         throw new ExcepcioCamping("L'allotjament no existeix.");
     }
+
+    //getter i setter
+    public ArrayList<Allotjament> getAllotjaments(){
+        return allotjaments;
+    }
+
+    public void setAllotjaments(ArrayList<Allotjament> allotjaments_){
+        this.allotjaments = allotjaments_;
+    }
 }

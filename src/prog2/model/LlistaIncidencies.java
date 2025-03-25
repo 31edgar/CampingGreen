@@ -14,14 +14,15 @@ public class LlistaIncidencies implements InLlistaIncidencies {
     }
 
     //Mètodes
-    public void afegirIncidencia(int num, Incidencia.TipusIncidencia tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
+    public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
         //Itera sobre la llista d'incidències i compara els allotjaments
         for (Incidencia incidencia : incidencias) {
             if (incidencia.getAllotjament().equals(allotjament)) {
                 throw new ExcepcioCamping("ERROR: Allotjament especificat ja té una incidènicia");
             }
         }
-        Incidencia in = new Incidencia(num,tipus,allotjament,data);
+
+        Incidencia in = new Incidencia(num,Incidencia.TipusIncidencia.valueOf(tipus),allotjament,data);
         incidencias.add(in);
         allotjament.tancarAllotjament(in);
     }

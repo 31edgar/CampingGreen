@@ -29,8 +29,15 @@ public class Camping implements InCamping {
     }
 
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
-        // LA INTERFICIE DIU QUE TIPUS ES UN STRING, PERÒ PENSO QUE JA ESTÀ BÉ QUE SIGUI DE TIPUS DE L'ENUM
-        llistaIncidencies.afegirIncidencia(num, tipus, idAllotjament, data);
+        //Necessitem una manera de buscar un allotjament per Id
+        //Si alguna cosa no funciona segurament sigui aixó
+        for (Allotjament allotjament : llistaAllotjaments.getAllotjaments()) {
+            if (allotjament.getId().equals(idAllotjament)) {
+                llistaIncidencies.afegirIncidencia(num, tipus, allotjament, data);
+                break;
+            }
+        }
+        throw new ExcepcioCamping("No s'ha trobat cap allotjament amb ID: " + idAllotjament);
     }
 
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
