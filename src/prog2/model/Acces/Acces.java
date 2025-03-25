@@ -39,16 +39,27 @@ public abstract class Acces implements InAcces {
         return ("Acces{"+"Nom: "+nom_+" Accessibilitat: "+accessibilitat_+" Estat: "+estat_+" Accés a: "+accesAllotjaments_);
     }
 
-    //Setters
+    //Getters i Setters
+    public String getNom(){return nom_;}
+
     public void setNom(String nom) {
         this.nom_ = nom;
     }
+
+    public boolean getAccessibilitat(){return accessibilitat_;}
+
     public void setAccessibilitat(boolean accessibilitat) {
         this.accessibilitat_ = accessibilitat;
     }
+
+    public boolean getEstat(){return estat_;}
+
     public void setEstat(boolean estat) {
         this.estat_ = estat;
     }
+
+    public ArrayList<Allotjament> getAccesAllotjament(){return accesAllotjaments_;}
+
     public void setAccesAllotjaments(ArrayList<Allotjament> accesAllotjaments) {
         this.accesAllotjaments_ = accesAllotjaments;
     }

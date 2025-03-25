@@ -64,4 +64,12 @@ public class LlistaIncidencies implements InLlistaIncidencies {
         }
         throw new ExcepcioCamping("ERROR: No hi ha cap incidència amb el número especificat");
     }
+
+    //getter i setter
+    public ArrayList<Incidencia> getIncidencias(){
+        return incidencias;
+    }
+    public void setIncidencias (ArrayList<Incidencia> incidencias_){
+        this.incidencias = incidencias_;
+    }
 }
