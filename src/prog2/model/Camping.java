@@ -4,12 +4,13 @@ import prog2.model.Allotjament.*;
 import prog2.model.Interficies.InCamping;
 import prog2.vista.ExcepcioCamping;
 
-public class Camping implements InCamping {
+import java.io.*;
+
+public class Camping implements InCamping, Serializable {
     private String nom;
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
-
 
     public String getNomCamping() {
         return nom;
@@ -20,8 +21,8 @@ public class Camping implements InCamping {
     }
 
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        // CAL IMPLEMENTAR LlistaAccessos.java (aquest mètode segur que és molt similar al de llistarAllotjaments de LlistaAllotjaments
-        return "";
+        boolean estat = infoEstat.equals("Obert");
+        return llistaAccessos.llistarAccessos(estat);
     }
 
     public String llistarIncidencies() throws ExcepcioCamping {
@@ -29,36 +30,47 @@ public class Camping implements InCamping {
     }
 
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
-        //Necessitem una manera de buscar un allotjament per Id
-        //Si alguna cosa no funciona segurament sigui aixó
-        for (Allotjament allotjament : llistaAllotjaments.getAllotjaments()) {
-            if (allotjament.getId().equals(idAllotjament)) {
-                llistaIncidencies.afegirIncidencia(num, tipus, allotjament, data);
-                break;
-            }
-        }
+        llistaIncidencies.afegirIncidencia(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data);
         throw new ExcepcioCamping("No s'ha trobat cap allotjament amb ID: " + idAllotjament);
     }
 
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
-        // Cal implementar
+        Incidencia incidencia = llistaIncidencies.getIncidencia(num);
+        llistaIncidencies.eliminarIncidencia(incidencia);
     }
 
     public int calculaAccessosAccessibles() {
-        return 0;
+        return llistaAccessos.calculaAccessosAccessibles();
     }
 
     public float calculaMetresQuadratsAsfalt() {
-        return 0;
+        return llistaAccessos.calculaMetresQuadratsAsfalt();
     }
 
     public void save(String camiDesti) throws ExcepcioCamping {
-        // Cal repassar el que fa aquest mètode + guardar informació en arxius binaris amb streams, etc.
+        // Variables
+        File fitxer = new File(camiDesti);
+
+        try { // Guardem el càmping actual
+            FileOutputStream fout = new FileOutputStream(fitxer);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(this);
+            fout.close();
+        } catch (IOException e) {
+            throw new ExcepcioCamping("Error al guardar l'arxiu");
+        }
     }
 
     public static Camping load(String camiOrigen) throws ExcepcioCamping {
-        // Cal repassar el que fa aquest mètode + guardar informació en arxius binaris amb streams, etc.
-        return null;
+        try { // Carreguem el càmping de l'arxiu
+            FileInputStream fin = new FileInputStream(camiOrigen);
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            Camping camping = (Camping)ois.readObject();
+            fin.close();
+            return camping;
+        } catch (Exception e) {
+            throw new ExcepcioCamping("Error al guardar l'arxiu");
+        }
     }
 
     public void inicialitzaDadesCamping() {

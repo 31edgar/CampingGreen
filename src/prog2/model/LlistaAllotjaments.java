@@ -35,23 +35,31 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         // Variables
-        String allotjamentsLlistats = "";
+        StringBuilder allotjamentsLlistats = new StringBuilder();
 
-        for (Allotjament allotjament : allotjaments) {
-            // Com l'estat de la classe Allotjament es un boolean i no un string, utilitzarem l'operador ternari
-            // Així podem decidir el valor del nostre String segons si l'estat és operatiu o no operatiu
-            String estatAllotjament = (allotjament.getEstatAllotjament()) ? "Operatiu" : "No operatiu";
+        // Cas Tots
+        if (estat.equals("Tots")) {
+            for (Allotjament allotjament : allotjaments) {
+                allotjamentsLlistats.append(allotjament.toString()).append("\n");
+            }
+        } else {
+            for (Allotjament allotjament : allotjaments) {
+                // Com l'estat de la classe Allotjament es un boolean i no un string, utilitzarem l'operador ternari
+                // Així podem decidir el valor del nostre String segons si l'estat és operatiu o no operatiu
+                String estatAllotjament = (allotjament.getEstatAllotjament()) ? "Operatiu" : "No operatiu";
 
-            // Tots els allotjaments que coincideixen amb l'estat donat, s'afegiran al string de la llista
-            if (estatAllotjament.equals(estat)) {
-                allotjamentsLlistats += allotjament.toString() + "\n"; // el \n està posat per a que sigui més clara la informació, espero que no afecti al desenvolupament
+                // Tots els allotjaments que coincideixen amb l'estat donat, s'afegiran al string de la llista
+                if (estatAllotjament.equals(estat)) {
+                    allotjamentsLlistats.append(allotjament.toString()).append("\n");
+                }
             }
         }
 
+        // Cas excepció
         if (allotjamentsLlistats.isEmpty()) {
             throw new ExcepcioCamping("No hi ha cap allotjament amb l'estat: " + estat + ".");
         } else {
-            return allotjamentsLlistats;
+            return allotjamentsLlistats.toString();
         }
     }
 
@@ -78,9 +86,9 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         return false;
     }
 
-    public Allotjament getAllotjament(String nom) throws ExcepcioCamping {
+    public Allotjament getAllotjament(String id) throws ExcepcioCamping {
         for (Allotjament allotjament : allotjaments) {
-            if (allotjament.getNom().equals(nom)) {
+            if (allotjament.getId().equals(id)) {
                 return allotjament;
             }
         }
