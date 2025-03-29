@@ -2,9 +2,11 @@ package prog2.model;
 import prog2.model.Allotjament.Allotjament;
 import prog2.model.Interficies.InLlistaIncidencies;
 import prog2.vista.ExcepcioCamping;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaIncidencies implements InLlistaIncidencies {
+public class LlistaIncidencies implements InLlistaIncidencies, Serializable {
 
     //Atribut
     private ArrayList<Incidencia> incidencias;
@@ -20,6 +22,9 @@ public class LlistaIncidencies implements InLlistaIncidencies {
             if (incidencia.getAllotjament().equals(allotjament)) {
                 throw new ExcepcioCamping("ERROR: Allotjament especificat ja té una incidènicia");
             }
+            if (incidencia.getNumeroIncidencia() == num) {
+                throw new ExcepcioCamping("ERROR: Ja existeix una incidència amb aquest número");
+            }
         }
 
         Incidencia in = new Incidencia(num,Incidencia.TipusIncidencia.valueOf(tipus),allotjament,data);
@@ -29,15 +34,16 @@ public class LlistaIncidencies implements InLlistaIncidencies {
 
     public void eliminarIncidencia(Incidencia in) throws ExcepcioCamping {
         //Comprova que la incidencia existeix dins la llista
-        if (!incidencias.isEmpty())
+        if (!incidencias.isEmpty()) {
             for (Incidencia incidencia : incidencias) {
                 if (incidencia.equals(in)) {
                     incidencias.remove(incidencia);
                     incidencia.getAllotjament().obrirAllotjament();
-                    break;
+                    return;
                 }
             }
-        throw new ExcepcioCamping("ERROR: La incidència especificada no existeix");
+        }
+            throw new ExcepcioCamping("ERROR: La incidència especificada no existeix");
     }
 
     public String llistarIncidencies() throws ExcepcioCamping {

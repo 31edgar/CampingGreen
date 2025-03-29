@@ -2,9 +2,10 @@ package prog2.model.Acces;
 
 import prog2.model.Allotjament.Allotjament;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class AccesTerra extends Acces{
+public abstract class AccesTerra extends Acces implements Serializable {
     //Atributs
     private float longitud_;
 

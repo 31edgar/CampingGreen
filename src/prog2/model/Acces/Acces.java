@@ -3,9 +3,10 @@ package prog2.model.Acces;
 import prog2.model.Allotjament.Allotjament;
 import prog2.model.Interficies.InAcces;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Acces implements InAcces {
+public abstract class Acces implements InAcces, Serializable {
     //Atributs
     private String nom_;
     private boolean accessibilitat_;

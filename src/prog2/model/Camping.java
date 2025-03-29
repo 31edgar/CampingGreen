@@ -12,6 +12,13 @@ public class Camping implements InCamping, Serializable {
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
 
+    public Camping(String nom) {
+        this.nom = nom;
+        llistaAllotjaments = new LlistaAllotjaments();
+        llistaAccessos = new LlistaAccessos();
+        llistaIncidencies = new LlistaIncidencies();
+    }
+
     public String getNomCamping() {
         return nom;
     }
@@ -31,7 +38,6 @@ public class Camping implements InCamping, Serializable {
 
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         llistaIncidencies.afegirIncidencia(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data);
-        throw new ExcepcioCamping("No s'ha trobat cap allotjament amb ID: " + idAllotjament);
     }
 
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
@@ -57,7 +63,7 @@ public class Camping implements InCamping, Serializable {
             oos.writeObject(this);
             fout.close();
         } catch (IOException e) {
-            throw new ExcepcioCamping("Error al guardar l'arxiu");
+            throw new ExcepcioCamping("Error al guardar l'arxiu: " + e.getMessage());
         }
     }
 

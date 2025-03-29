@@ -3,7 +3,9 @@ package prog2.model.Allotjament;
 import prog2.model.Incidencia;
 import prog2.model.Interficies.InAllotjament;
 
-public abstract class Allotjament implements InAllotjament {
+import java.io.Serializable;
+
+public abstract class Allotjament implements InAllotjament, Serializable {
     // Atributs classe Allotjament
     private String nom_;
     private String idAllotjament_;

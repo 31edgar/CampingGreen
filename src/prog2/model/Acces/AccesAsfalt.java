@@ -2,14 +2,15 @@ package prog2.model.Acces;
 
 import prog2.model.Allotjament.Allotjament;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class AccesAsfalt extends Acces{
+public abstract class AccesAsfalt extends Acces implements Serializable {
     //Atributs
     private float metresQuadratsAsfalt_;
 
     //Constructor
-    AccesAsfalt(String nom, boolean accessibilitat, float metresQuadratsAsfalt){
+    protected AccesAsfalt(String nom, boolean accessibilitat, float metresQuadratsAsfalt){
         super(nom, accessibilitat);
         this.metresQuadratsAsfalt_ = metresQuadratsAsfalt;
     }

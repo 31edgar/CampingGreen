@@ -3,9 +3,10 @@ package prog2.model.Acces;
 import prog2.model.Interficies.InLlistaAccessos;
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAccessos implements InLlistaAccessos {
+public class LlistaAccessos implements InLlistaAccessos, Serializable {
 
     //Atribut
     private ArrayList<Acces> accessos;
@@ -23,9 +24,6 @@ public class LlistaAccessos implements InLlistaAccessos {
     }
 
     public void buidar() {
-        if(accessos.isEmpty()){
-            throw new ExcepcioCamping("ERROR: La llista d'accessos és buida");
-        }
         accessos.clear();
     }
 
@@ -41,7 +39,7 @@ public class LlistaAccessos implements InLlistaAccessos {
         }
 
         if (accessosLlistats.isEmpty()) {
-            throw new ExcepcioCamping("ERROR: No hi ha cap acces amb l'estat: " + estat + ".");
+            throw new ExcepcioCamping("ERROR: No hi ha cap acces amb l'estat: " + ((estat)? "Obert" : "Tancat") + ".");
         }
         else {
             return accessosLlistats.toString();

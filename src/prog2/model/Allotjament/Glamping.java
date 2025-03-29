@@ -1,6 +1,8 @@
 package prog2.model.Allotjament;
 
-public class Glamping extends Casa {
+import java.io.Serializable;
+
+public class Glamping extends Casa implements Serializable {
     //Atributs Glamping
     private String material_;
     private boolean casaMascota_;

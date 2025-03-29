@@ -2,7 +2,9 @@ package prog2.model;
 
 import prog2.model.Allotjament.Allotjament;
 
-public class Incidencia {
+import java.io.Serializable;
+
+public class Incidencia implements Serializable {
     public enum TipusIncidencia {
         Reparacio,
         Neteja,

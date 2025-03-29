@@ -3,9 +3,10 @@ import prog2.model.Allotjament.Allotjament;
 import prog2.model.Interficies.InLlistaAllotjaments;
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAllotjaments implements InLlistaAllotjaments {
+public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
     // Atributs
     private ArrayList<Allotjament> allotjaments;
 
@@ -42,7 +43,9 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
             for (Allotjament allotjament : allotjaments) {
                 allotjamentsLlistats.append(allotjament.toString()).append("\n");
             }
-        } else {
+        }
+        // Cas Operatiu/No operatiu
+        else {
             for (Allotjament allotjament : allotjaments) {
                 // Com l'estat de la classe Allotjament es un boolean i no un string, utilitzarem l'operador ternari
                 // Així podem decidir el valor del nostre String segons si l'estat és operatiu o no operatiu

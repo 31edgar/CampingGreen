@@ -2,9 +2,10 @@ package prog2.model.Acces;
 
 import prog2.model.Allotjament.Allotjament;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CarreteraAsfaltada extends AccesAsfalt{
+public class CarreteraAsfaltada extends AccesAsfalt implements Serializable {
     //Atributs
     private float pesMaxim_;
 

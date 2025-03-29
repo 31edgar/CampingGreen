@@ -1,6 +1,8 @@
 package prog2.model.Allotjament;
 
-public class Parcela extends Allotjament {
+import java.io.Serializable;
+
+public class Parcela extends Allotjament implements Serializable {
     //Atributs Parcela
     private float metres_;
     private boolean connexioElectrica_;

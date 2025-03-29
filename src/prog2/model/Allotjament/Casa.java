@@ -1,6 +1,8 @@
 package prog2.model.Allotjament;
 
-public abstract class Casa extends Allotjament{
+import java.io.Serializable;
+
+public abstract class Casa extends Allotjament implements Serializable {
     //Atributs Casa
     private float mida_;
     private int habitacions_;

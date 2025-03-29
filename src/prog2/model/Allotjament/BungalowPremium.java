@@ -1,6 +1,8 @@
 package prog2.model.Allotjament;
 
-public class BungalowPremium extends Bungalow {
+import java.io.Serializable;
+
+public class BungalowPremium extends Bungalow implements Serializable {
     //Atribut Bungalow Premium
     private boolean serveisExtra_;
     private String codiWifi_;

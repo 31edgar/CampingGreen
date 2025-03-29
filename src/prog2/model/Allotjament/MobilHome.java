@@ -1,6 +1,8 @@
 package prog2.model.Allotjament;
 
-public class MobilHome extends Casa {
+import java.io.Serializable;
+
+public class MobilHome extends Casa implements Serializable {
     //Atributs MobilHome
     private boolean terrasaBarbacoa_;
 
