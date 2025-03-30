@@ -6,12 +6,34 @@ import prog2.vista.ExcepcioCamping;
 
 import java.io.*;
 
+/**
+ * Classe principal que representa un camping i la seva gestió.
+ * <p>
+ * Aquesta classe implementa la interfície {@link InCamping} i s'encarrega
+ * de gestionar tots els elements del camping: allotjaments, accessos
+ * i incidències. També proporciona mètodes per a la persistència de dades.
+ * </p>
+ *
+ * @author Guillem Calvet
+ * @author Edgar Esparza
+ * @version 1.0
+ * @see InCamping
+ * @see LlistaAllotjaments
+ * @see LlistaAccessos
+ * @see LlistaIncidencies
+ * @since 1.0
+ */
 public class Camping implements InCamping, Serializable {
     private String nom;
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
 
+    /**
+     * Constructor principal del camping.
+     *
+     * @param nom Nom del camping
+     */
     public Camping(String nom) {
         this.nom = nom;
         llistaAllotjaments = new LlistaAllotjaments();
@@ -19,45 +41,100 @@ public class Camping implements InCamping, Serializable {
         llistaIncidencies = new LlistaIncidencies();
     }
 
+    /**
+     * Obté el nom del camping.
+     *
+     * @return Nom del camping
+     */
     public String getNomCamping() {
         return nom;
     }
 
+    /**
+     * Llista els allotjaments segons l'estat especificat.
+     *
+     * @param estat Estat dels allotjaments a llistar ("Tots", "Oberts" o "Tancats")
+     * @return String amb la llista d'allotjaments
+     * @throws ExcepcioCamping Si hi ha un error en el filtratge
+     */
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         return llistaAllotjaments.llistarAllotjaments(estat);
     }
 
+    /**
+     * Llista els accessos segons l'estat especificat.
+     *
+     * @param infoEstat Estat dels accessos a llistar ("Obert" o "Tancat")
+     * @return String amb la llista d'accessos
+     * @throws ExcepcioCamping Si hi ha un error en el filtratge
+     */
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
         boolean estat = infoEstat.equals("Obert");
         return llistaAccessos.llistarAccessos(estat);
     }
 
+    /**
+     * Llista totes les incidències registrades.
+     *
+     * @return String amb la llista d'incidències
+     * @throws ExcepcioCamping Si hi ha un error en la llista
+     */
     public String llistarIncidencies() throws ExcepcioCamping {
         return llistaIncidencies.llistarIncidencies();
     }
 
+    /**
+     * Afegeix una nova incidència al sistema.
+     *
+     * @param num Número d'incidència
+     * @param tipus Tipus d'incidència
+     * @param idAllotjament Identificador de l'allotjament afectat
+     * @param data Data de l'incidència
+     * @throws ExcepcioCamping Si l'allotjament no existeix o hi ha un error
+     */
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         llistaIncidencies.afegirIncidencia(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data);
     }
 
+    /**
+     * Elimina una incidència existent.
+     *
+     * @param num Número de l'incidència a eliminar
+     * @throws ExcepcioCamping Si l'incidència no existeix
+     */
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
         Incidencia incidencia = llistaIncidencies.getIncidencia(num);
         llistaIncidencies.eliminarIncidencia(incidencia);
     }
 
+    /**
+     * Calcula el nombre d'accessos accessibles (oberts).
+     *
+     * @return Nombre d'accessos oberts
+     */
     public int calculaAccessosAccessibles() {
         return llistaAccessos.calculaAccessosAccessibles();
     }
 
+    /**
+     * Calcula els metres quadrats totals de camins asfaltats.
+     *
+     * @return Metratge total asfaltat
+     */
     public float calculaMetresQuadratsAsfalt() {
         return llistaAccessos.calculaMetresQuadratsAsfalt();
     }
 
+    /**
+     * Guarda l'estat actual del camping en un fitxer.
+     *
+     * @param camiDesti Ruta del fitxer on es guardarà l'estat
+     * @throws ExcepcioCamping Si hi ha un error en el procés de guardat
+     */
     public void save(String camiDesti) throws ExcepcioCamping {
-        // Variables
         File fitxer = new File(camiDesti);
 
-        try { // Guardem el càmping actual
+        try {
             FileOutputStream fout = new FileOutputStream(fitxer);
             ObjectOutputStream oos = new ObjectOutputStream(fout);
             oos.writeObject(this);
@@ -67,8 +144,15 @@ public class Camping implements InCamping, Serializable {
         }
     }
 
+    /**
+     * Carrega un estat de camping des d'un fitxer.
+     *
+     * @param camiOrigen Ruta del fitxer a carregar
+     * @return Instància de Camping carregada
+     * @throws ExcepcioCamping Si hi ha un error en el procés de càrrega
+     */
     public static Camping load(String camiOrigen) throws ExcepcioCamping {
-        try { // Carreguem el càmping de l'arxiu
+        try {
             FileInputStream fin = new FileInputStream(camiOrigen);
             ObjectInputStream ois = new ObjectInputStream(fin);
             Camping camping = (Camping)ois.readObject();
@@ -79,6 +163,13 @@ public class Camping implements InCamping, Serializable {
         }
     }
 
+    /**
+     * Inicialitza les dades del camping amb valors per defecte.
+     * <p>
+     * Crea 12 accessos de diferents tipus i 6 allotjaments de diversos tipus,
+     * establint les relacions entre ells.
+     * </p>
+     */
     public void inicialitzaDadesCamping() {
         llistaAccessos.buidar();
 
